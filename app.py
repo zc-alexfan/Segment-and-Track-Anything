@@ -3,6 +3,7 @@ import gradio as gr
 import importlib
 import sys
 import os
+import shutil
 import pdb
 from matplotlib.pyplot import step
 
@@ -322,6 +323,10 @@ def add_new_object(Seg_Tracker):
     return Seg_Tracker, [[], []]
 
 def tracking_objects(Seg_Tracker, input_video, input_img_seq, fps, frame_num=0):
+    # remove
+    rm_p = './tracking_results'
+    if os.path.exists(rm_p):
+        shutil.rmtree(rm_p)
     print("Start tracking !")
     # pdb.set_trace()
     # output_video, output_mask=tracking_objects_in_video(Seg_Tracker, input_video, input_img_seq, fps)
@@ -576,8 +581,8 @@ def seg_track_app():
                                 label='sam_gap',
                                 minimum = 1,
                                 step=1,
-                                maximum = 9999,
-                                value=100,
+                                maximum = 99999,
+                                value=20000,
                                 interactive=True,
                             )
 
@@ -586,7 +591,7 @@ def seg_track_app():
                                 minimum = 50,
                                 step=1,
                                 maximum = 300,
-                                value=255,
+                                value=50,
                                 interactive=True
                             )
                             with gr.Accordion("aot advanced options", open=False):
