@@ -1,3 +1,5 @@
+mkdir ./ckpt
+
 # download aot-ckpt 
 gdown --id '1QoChMkTVxdYZ_eBlZhK2acq9KMQZccPJ' --output ./ckpt/R50_DeAOTL_PRE_YTB_DAV.pth
 
