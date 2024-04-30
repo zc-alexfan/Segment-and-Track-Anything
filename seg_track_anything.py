@@ -250,7 +250,7 @@ def img_seq_type_input_tracking(SegTracker, io_args, video_name, imgs_path, fps,
 
     output_mask_dir = io_args['output_mask_dir']
     create_dir(io_args['output_mask_dir'])
-    create_dir(io_args['output_masked_frame_dir'])
+    #create_dir(io_args['output_masked_frame_dir'])
 
 
     i_frame_num = frame_num
@@ -300,6 +300,7 @@ def img_seq_type_input_tracking(SegTracker, io_args, video_name, imgs_path, fps,
     ##################
     # Visualization
     ##################
+    """
 
     # draw pred mask on frame and save as a video
     height, width = pred_list[0].shape
@@ -336,6 +337,7 @@ def img_seq_type_input_tracking(SegTracker, io_args, video_name, imgs_path, fps,
 
     # zip predicted mask
     os.system(f"zip -r {io_args['tracking_result_dir']}/{video_name}_pred_mask.zip {io_args['output_mask_dir']}")
+    """
 
     # manually release memory (after cuda out of memory)
     del SegTracker
